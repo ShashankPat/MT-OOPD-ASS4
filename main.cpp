@@ -2,33 +2,33 @@
 using namespace std;
 
 struct Person{
-    string firstname;
-    string lastname;
+    string first_name;
+    string last_name;
     int age;
     string gender;
     string address;
 };
 
-class VehicleOwner{
+class Vehicle_Owner{
 
     string Vehicle_Number;
-    string FirstName;
-    string LastName;
+    string First_Name;
+    string Last_Name;
     int Age;
     string Gender;
     string Address;
 
     public:
 
-    // getter functions
+    // getter functions //
     string getVehiclenumber(){return Vehicle_Number;}
-    string getFirstname(){return FirstName;}
-    string getlastname(){return LastName;}
+    string getFirstname(){return First_Name;}
+    string getlastname(){return Last_Name;}
     int getage(){return Age;}
     string getgender(){return Gender;}
     string getAddress(){return Address;}
 
-    void ReadandStorePeopleData(vector<VehicleOwner>& v)
+    void ReadandStorePeopleData(vector<Vehicle_Owner>& v)
     {
         fstream f("A4-Q1.csv");
         if(!f.is_open())
@@ -36,11 +36,11 @@ class VehicleOwner{
             cerr << "error while opening file\n";
         }
         string line;
-        getline(f,line); // reading header line
+        getline(f,line); //// reading header line ////
 
         while(getline(f,line,'\n'))
         {
-            VehicleOwner vo;
+            Vehicle_Owner vo;
             string temp;
             stringstream ss(line);
             getline(ss,temp,',');
@@ -49,9 +49,9 @@ class VehicleOwner{
             temp = "," + temp ;
             vo.Vehicle_Number += temp;
             getline(ss,temp,',');
-            vo.FirstName = temp;
+            vo.First_Name = temp;
             getline(ss,temp,',');
-            vo.LastName = temp;
+            vo.Last_Name = temp;
             getline(ss,temp,',');
             vo.Age = stoi(temp);
             getline(ss,temp,',');
@@ -62,15 +62,15 @@ class VehicleOwner{
         }
         f.close();
     }
-    void EditVehicleInfo(vector<VehicleOwner>& v)
+    void Edit_Vehicle_Info(vector<Vehicle_Owner>& v)
     {
-        VehicleOwner temp;
+        Vehicle_Owner temp;
         cout<<"Enter Vehicle number with state code which you want to edit:  ";
         cin>>temp.Vehicle_Number;
         cout<<"Enter first name: ";
-        cin>> temp.FirstName;
+        cin>> temp.First_Name;
         cout<<"Enter Last Name: ";
-        cin>> temp.LastName;
+        cin>> temp.Last_Name;
         cout<<"Enter Gender : ";
         cin>> temp.Gender;
         cout<<"Enter age: ";
@@ -90,15 +90,15 @@ class VehicleOwner{
 
     }
 
-    void AddNewVehicle(vector<VehicleOwner>& v)
+    void Add_New_Vehicle(vector<Vehicle_Owner>& v)
     {
-        VehicleOwner temp;
+        Vehicle_Owner temp;
         cout<<"Enter Vehicle number with state code: ";
         cin>> temp.Vehicle_Number;
         cout<<"Enter first name: ";
-        cin>> temp.FirstName;
+        cin>> temp.First_Name;
         cout<<"Enter Last Name: ";
-        cin>> temp.LastName;
+        cin>> temp.Last_Name;
         cout<<"Enter Gender : ";
         cin>> temp.Gender;
         cout<<"Enter age: ";
@@ -109,7 +109,7 @@ class VehicleOwner{
         v.push_back(temp);
     }
 
-    void DeleteVehicle(vector<VehicleOwner>& v)
+    void Delete_Vehicle(vector<Vehicle_Owner>& v)
     {
         string s;
         cout<<"Enter Vehicle Number to be deleted with state code: ";
@@ -134,16 +134,16 @@ class VehicleOwner{
 
         v.erase(v.begin()+index);
     }
-    void Displaydata(vector<VehicleOwner> v)
+    void Displaydata(vector<Vehicle_Owner> v)
     {
         for(auto i:v)
         {
-            cout<<i.Vehicle_Number <<" "<<i.FirstName <<" "<<i.LastName<<" "<<i.Gender<<" "<<i.Age<<" "<<i.Address<<"\n";
+            cout<<i.Vehicle_Number <<" "<<i.First_Name <<" "<<i.Last_Name<<" "<<i.Gender<<" "<<i.Age<<" "<<i.Address<<"\n";
         }
     }
 };
 
-class TrafficViolation
+class Traffic_Violation
 {
     string vehicle_number;
     string type;
@@ -155,7 +155,7 @@ class TrafficViolation
     string gettype(){return type;}
     string getlocation(){return location;}
 
-    void ReadandStoreviolations(vector<TrafficViolation> &v)
+    void Readand_Store_violations(vector<Traffic_Violation> &v)
     {
         fstream f("A4-Q2.csv");
         if(!f.is_open())
@@ -163,7 +163,7 @@ class TrafficViolation
             cerr << "error while opening file\n";
         }
 
-        TrafficViolation t;
+        Traffic_Violation t;
         string line;
         getline(f,line); // reading header line
 
@@ -186,15 +186,15 @@ class TrafficViolation
         f.close();
     }
 
-    void DisplayViolations(vector<TrafficViolation> &v)
+    void Display_Violations(vector<Traffic_Violation> &v)
     {
         for(auto i:v)
         cout<<i.vehicle_number<<" "<<i.type<<" "<<i.location<<"\n";
     }
 
-    void AddViolation(vector<TrafficViolation> &v)
+    void Add_Violation(vector<Traffic_Violation> &v)
     {
-        TrafficViolation t;
+        Traffic_Violation t;
         cout<<"Enter vehicle number : ";
         cin>>t.vehicle_number;
         cout<<"Enter type of violation: ";
@@ -206,9 +206,9 @@ class TrafficViolation
         v.push_back(t);
     }
 
-    void DeleteViolation(vector<TrafficViolation> &v)
+    void Delete_Violation(vector<Traffic_Violation> &v)
     {
-        TrafficViolation t;
+        Traffic_Violation t;
         cout<<"Enter vehicle number : ";
         cin>>t.vehicle_number;
         cout<<"Enter type of violation: ";
@@ -228,9 +228,9 @@ class TrafficViolation
         }
     }
 
-    void EditViolation(vector<TrafficViolation> &v)
+    void Edit_Violation(vector<Traffic_Violation> &v)
     {
-        TrafficViolation t1,t2;
+        Traffic_Violation t1,t2;
         cout<<"Enter original vehicle number : ";
         cin>>t1.vehicle_number;
         cout<<"Enter type of violation: ";
@@ -282,9 +282,9 @@ class Evidence{
     {
         Person p;
         cout<<"Enter first name : ";
-        cin>>p.firstname;
+        cin>>p.first_name;
         cout<<"Enter last name: ";
-        cin>>p.lastname;
+        cin>>p.last_name;
         cout<<"Enter age: ";
         cin>>p.age;
         cout<<"Enter gender: ";
@@ -295,7 +295,7 @@ class Evidence{
 
         witnesses.push_back(p);
     }
-    void addviolationdetails()
+    void add_violation_details()
     {
         struct violation v;
         cout<<"Enter vehicle number: ";
@@ -308,7 +308,7 @@ class Evidence{
 
         violation_details = v;
     }
-    void addresponsetext()
+    void add_response_text()
     {
         string s;
         cout<<"enter response text: ";
@@ -316,7 +316,7 @@ class Evidence{
         getline(cin,s);
         response_text = s;
     }
-    void addpriorinfo()
+    void add_prior_info()
     {   
         string s;
         cout<<"Enter any prior information about the person: ";
@@ -345,18 +345,18 @@ class Evidence{
 
 int main()
 {
-    // Question 1
-    VehicleOwner V;
-    vector<VehicleOwner> v;
+    ///////////// Question 1 ////////////////////
+    Vehicle_Owner V;
+    vector<Vehicle_Owner> v;
     V.ReadandStorePeopleData(v);
 
     while(1)
     {
         char choice;
-        cout<<"Press 1 to display Vehicles data\n";
-        cout<<"Press 2 for adding new Vehicle\n";
-        cout<<"Press 3 for deleting vehicle\n";
-        cout<<"Press 4 for editing a vehicle\n";
+        cout<<"\tPress 1 to display Vehicles data:\n\t";
+        cout<<"Press 2 for adding new Vehicle:\n\t";
+        cout<<"Press 3 for deleting vehicle:\n\t";
+        cout<<"Press 4 for editing a vehicle:\n\t";
         cin>>choice;
 
         switch(choice)
@@ -365,13 +365,13 @@ int main()
             V.Displaydata(v);
             break;
             case '2':
-            V.AddNewVehicle(v);
+            V.Add_New_Vehicle(v);
             break;
             case '3':
-            V.DeleteVehicle(v);
+            V.Delete_Vehicle(v);
             break;
             case '4':
-            V.EditVehicleInfo(v);
+            V.Edit_Vehicle_Info(v);
             break;
             default:
             cout<<"Exiting question 1\n";
@@ -380,34 +380,34 @@ int main()
         }
     }
     
-    // Question 2
+    ////////// Question 2 ///////////////
     label1:
-    TrafficViolation T;
-    vector<TrafficViolation> t;
-    T.ReadandStoreviolations(t);
+    Traffic_Violation T;
+    vector<Traffic_Violation> t;
+    T.Readand_Store_violations(t);
 
     while(1)
     {
         char choice;
-        cout<<"Press 1 to display Violations data\n";
-        cout<<"Press 2 for adding new Violation\n";
-        cout<<"Press 3 for deleting Violation\n";
-        cout<<"Press 4 for editing a Violation\n";
+        cout<<"\tPress 1 to display Violations data\n\t";
+        cout<<"Press 2 for adding new Violation\n\t";
+        cout<<"Press 3 for deleting Violation\n\t";
+        cout<<"Press 4 for editing a Violation\n\t";
         cin>>choice;
 
         switch(choice)
         {
             case '1':
-            T.DisplayViolations(t);
+            T.Display_Violations(t);
             break;
             case '2':
-            T.AddViolation(t);
+            T.Add_Violation(t);
             break;
             case '3':
-            T.DeleteViolation(t);
+            T.Delete_Violation(t);
             break;
             case '4':
-            T.EditViolation(t);
+            T.Edit_Violation(t);
             break;
             default:
             cout<<"Exiting question 2\n";
@@ -417,7 +417,7 @@ int main()
     }
 
     label2:
-    // Question 3
+    //////// Question 3 /////////////
     vector<Person> P;
     fstream f("A4-Q3.csv");
     if(!f.is_open())
@@ -430,8 +430,8 @@ int main()
     {
         Person p;
         stringstream ss(line);
-        getline(ss,p.firstname,',');
-        getline(ss,p.lastname,',');
+        getline(ss,p.first_name,',');
+        getline(ss,p.last_name,',');
         getline(ss,line,',');
         p.age = stoi(line);
         getline(ss,p.gender,',');
@@ -451,9 +451,9 @@ int main()
             {
                 for(int k=0;k<P.size();k++)
                 {
-                    if(P[k].firstname == v[j].getFirstname() && P[k].lastname == v[j].getlastname() && P[k].age == v[j].getage()
+                    if(P[k].first_name == v[j].getFirstname() && P[k].last_name == v[j].getlastname() && P[k].age == v[j].getage()
                      && P[k].gender == v[j].getgender() && P[k].address!=v[j].getAddress() )
-                    cout<<P[k].firstname <<" "<<P[k].lastname <<" "<<P[k].age <<" "<<P[k].address<<"\n";
+                    cout<<P[k].first_name <<" "<<P[k].last_name <<" "<<P[k].age <<" "<<P[k].address<<"\n";
                 }
             }
         }
@@ -462,7 +462,7 @@ int main()
 
 
     cout<<"\n\n";
-    // Question 4
+    ////////// Question 4////////////////
     
     vector<Evidence> e;
 
@@ -476,9 +476,9 @@ int main()
         {
             E.addwitnesses();
         }
-        E.addviolationdetails();
-        E.addresponsetext();
-        E.addpriorinfo();
+        E.add_violation_details();
+        E.add_response_text();
+        E.add_prior_info();
         vector<Person> witnesses = E.getwitnesses();
         struct violation violation_details = E.getviolationdetails();
         string response_text = E.getrepsonsetext();
@@ -505,8 +505,8 @@ int main()
         cout<<"list of witnesses are\n";
         for(int j=0;j<witnesses.size();j++)
         {
-            cout<<"first name : "<<witnesses[j].firstname<<"\n";
-            cout<<"last name : "<<witnesses[j].lastname<<"\n";
+            cout<<"first name : "<<witnesses[j].first_name<<"\n";
+            cout<<"last name : "<<witnesses[j].last_name<<"\n";
             cout<<"age : "<<witnesses[j].age<<"\n";
             cout<<"gender : "<<witnesses[j].gender<<"\n";
             cout<<"Address : "<<witnesses[j].address<<"\n";
